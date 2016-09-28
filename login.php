@@ -2,6 +2,7 @@
 	
 	//võtab ja kopeerib faili sisu
 	require("../../../config.php");
+	require("functions.php");
 
 	//var_dump(5.5);
 	
@@ -83,29 +84,7 @@
 		
 		//echo $serverPassword;
 		
-		$database = "if16_romil";
-		
-		//ühendus
-		$mysqli = new mysqli($serverHost,$serverUsername,$serverPassword,$database);
-		
-		//käsk
-		$stmt = $mysqli->prepare("INSERT INTO user_sample (email, password) VALUES (?, ?)");
-		
-		echo $mysqli->error;
-		
-		//asendan küsimärgi väärtustega
-		//iga muutuja kohta 1 täht, mis tüüpi muutuja on
-		// s - string
-		// i - integer
-		// d - double/float
-		$stmt->bind_param("ss", $signupEmail, $password);
-		
-		if ($stmt->execute()) {
-				
-			echo "salvestamine õnnestus";
-	   } else {
-		   echo "ERROR ".$stmt->error;
-	   }
+		signup($signupEmail, $password);
 	   
 	   
 		
