@@ -30,6 +30,8 @@
 	
 	function login($email, $password) {
 		
+		$error = "";
+		
 		$mysqli = new mysqli($GLOBALS["serverHost"],$GLOBALS["serverUsername"],$GLOBALS["serverPassword"],$GLOBALS["database"]);
 
 		$stmt = $mysqli->prepare("
@@ -57,15 +59,18 @@
 				echo "kasutaja ".$id." logis sisse";
 				
 			} else {
-				echo "parool vale";
+				$error = "parool vale";
 			}
 			
 		
 		} else {
 			//ei olnud 
 			
-			echo "sellise emailiga ".$email." kasutajat ei olnud";
+			$error = "sellise emailiga ".$email." kasutajat ei olnud";
 		}
+		
+		
+		return $error;
 		
 		
 	}

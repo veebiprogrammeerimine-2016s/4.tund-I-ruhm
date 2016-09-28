@@ -90,7 +90,7 @@
 		
 	}
 	
-	
+	$error = "";
 	// kontrollin, et kasutaja täitis välja ja võib sisse logida
 	if ( isset($_POST["loginEmail"]) &&
 		 isset($_POST["loginPassword"]) &&
@@ -99,7 +99,7 @@
 	  ) {
 		
 		//login sisse
-		login($_POST["loginEmail"], $_POST["loginPassword"]);
+		$error = login($_POST["loginEmail"], $_POST["loginPassword"]);
 		
 	}
 	
@@ -115,7 +115,7 @@
 		<h1>Logi sisse</h1>
 		
 		<form method="POST">
-			
+			<p style="color:red;"><?=$error;?></p>
 			<label>E-post</label><br>
 			<input name="loginEmail" type="email">
 			
