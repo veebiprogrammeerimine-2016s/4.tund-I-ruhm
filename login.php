@@ -91,6 +91,18 @@
 	}
 	
 	
+	// kontrollin, et kasutaja täitis välja ja võib sisse logida
+	if ( isset($_POST["loginEmail"]) &&
+		 isset($_POST["loginPassword"]) &&
+		 !empty($_POST["loginEmail"]) &&
+		 !empty($_POST["loginPassword"])
+	  ) {
+		
+		//login sisse
+		login($_POST["loginEmail"], $_POST["loginPassword"]);
+		
+	}
+	
 
 ?>
 <!DOCTYPE html>
